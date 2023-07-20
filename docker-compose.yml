@@ -1,0 +1,42 @@
+version: '3.8'
+x-loyalty: &webapp
+  build: .
+  depends_on:
+    - postgresql
+  volumes:
+    - .:/webapp
+  stdin_open: true
+  tty: true
+  networks:
+    - loyalty_default
+  environment:
+    DB_HOST: postgresql
+    NODE_OPTIONS: --openssl-legacy-provider
+    NODE_ENV: development
+
+services:
+  rails:
+    command: sh -c "bundle install && rm -rf tmp/pids && rails s -b 0.0.0.0"
+    ports:
+      - 3000:3000
+      - 3035:3035
+    container_name: loyalty
+    <<: *webapp
+  postgresql:
+    image: postgres:15.2
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - '.:/share'
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 5432:5432
+    container_name: postgresql_loyalty
+    restart: 'always'
+    networks:
+      - loyalty_default
+
+networks:
+  loyalty_default:
+    driver: bridge
+    name: loyalty_default
