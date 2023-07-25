@@ -1,0 +1,2 @@
+class LoyaltyTier < ApplicationRecord
+end
