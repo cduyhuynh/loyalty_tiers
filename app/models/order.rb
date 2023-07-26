@@ -5,4 +5,6 @@ class Order < ApplicationRecord
 
   validates :total_in_cents, presence: true, comparison: { greater_than: 0 }
   validates :status, presence: true, inclusion: { in: STATUS.values }
+
+  scope :completed, -> { where(status: STATUS[:completed]) }
 end

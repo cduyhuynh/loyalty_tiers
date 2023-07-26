@@ -3,4 +3,9 @@ class User < ApplicationRecord
   belongs_to :loyalty_tier
 
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  def promote_to_next_loyalty_tier next_tier
+    self.loyalty_tier_id = next_tier.id
+    self.save!
+  end
 end
