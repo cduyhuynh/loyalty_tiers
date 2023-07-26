@@ -16,9 +16,9 @@ class LoyaltyTierService
   end
 
   def total_spending_from_last_year user_id
-    @total_spending_from_last_year ||= Order.completed.where(user_id: user_id).
-                                        where(created_at: from_last_year_range).
-                                        sum(:total_in_cents)
+    Order.completed.where(user_id: user_id).
+      where(created_at: from_last_year_range).
+      sum(:total_in_cents)
   end
 
   def from_last_year_range
