@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_102424) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_114901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_102424) do
     t.jsonb "info", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "loyalty_tier_id"
+    t.index ["loyalty_tier_id"], name: "index_users_on_loyalty_tier_id"
   end
 
+  add_foreign_key "users", "loyalty_tiers"
 end
