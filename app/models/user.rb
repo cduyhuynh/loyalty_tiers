@@ -12,6 +12,6 @@ class User < ApplicationRecord
 
   private
   def set_default_tier
-    self.loyalty_tier = LoyaltyTier.default_tier
+    self.loyalty_tier = LoyaltyTier.default_tier if self.loyalty_tier.nil?
   end
 end
