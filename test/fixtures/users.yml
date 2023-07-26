@@ -4,8 +4,20 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  email: "customer1@ichigo.com"
+bronze:
+  email: "customer_bronze@ichigo.com"
   first_name: 'Customer'
-  last_name: 'One'
-  loyalty_tier_id: loyalty_tiers(:bronze).id
+  last_name: 'Bronze'
+  loyalty_tier: bronze
+
+silver:
+  email: "customer_silver@ichigo.com"
+  first_name: 'Customer'
+  last_name: 'Silver'
+  loyalty_tier: silver
+
+gold:
+  email: "customer_gold@ichigo.com"
+  first_name: 'Customer'
+  last_name: 'Gold'
+  loyalty_tier: gold

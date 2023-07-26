@@ -7,12 +7,12 @@
 bronze:
   name: 'bronze'
   condition: 0
-  rank: 0
+  rank: 1
 silver:
   name: 'silver'
-  condition: 100
-  rank: 1
+  condition: 10000
+  rank: 2
 gold:
   name: 'gold'
-  condition: 500
-  rank: 2
+  condition: 50000
+  rank: 3
