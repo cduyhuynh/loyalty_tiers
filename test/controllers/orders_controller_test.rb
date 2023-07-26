@@ -1,6 +1,12 @@
 require "test_helper"
 
 class OrdersControllerTest < ActionDispatch::IntegrationTest
+  test "invalid order" do
+    put api_orders_complete_url, params: { id: -1, customerId: users(:bronze).id, totalInCents: 2000 }
+
+    assert_response 400
+  end
+
   test "bronze customer completes an order" do
     put api_orders_complete_url, params: { id: orders(:processing).id, customerId: users(:bronze).id, totalInCents: 2000 }
 

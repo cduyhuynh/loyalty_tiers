@@ -11,8 +11,11 @@ class Api::OrdersController < ApplicationController
   end
 
   def find_order
-    @order ||= Order.find params[:id]
-    render json: { message: 'Order not found' }, status: 400 if @order.nil?
+    begin
+      @order ||= Order.find params[:id]
+    rescue
+      render json: { message: 'Order not found' }, status: 400
+    end
   end
 
   def complete_params
