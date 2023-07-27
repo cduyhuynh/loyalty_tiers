@@ -23,8 +23,8 @@ class LoyaltyTierByBatchService
     end
   end
 
-  def total_spending_in_last_year_by_users user
-    user_ids = user.pluck :id
+  def total_spending_in_last_year_by_users users
+    user_ids = users.map &:id
     Order.completed.where(user_id: user_ids).
       where(created_at: last_year_range).
       group(:user_id).
