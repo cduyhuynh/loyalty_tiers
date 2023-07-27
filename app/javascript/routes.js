@@ -5,7 +5,7 @@ import User from 'components/User';
 export default (
   <Router>
     <Routes>
-      <Route path='/' exact element=<User/> />
+      <Route path='/users/:id' exact element=<User/> />
     </Routes>
   </Router>
 );

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get '/users/:id', to: 'static#index'
   namespace :api, defaults: { format: 'json' } do
     namespace :orders do
       put :complete
