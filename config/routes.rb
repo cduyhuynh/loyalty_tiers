@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     namespace :orders do
       put :complete
     end
+
+    resources :users, only: [:show]
   end
 end
