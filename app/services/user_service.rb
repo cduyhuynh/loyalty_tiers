@@ -5,13 +5,14 @@ class UserService
 
   def show
     serialized_user = {}
-    serialized_user[:loyalty_tier] = @user.loyalty_tier.name
+    serialized_user[:email] = @user.email
+    serialized_user[:loyalty_tier] = @user.loyalty_tier.name.upcase
     serialized_user[:tier_calculation_start_date] = tier_calculation_start_date
-    serialized_user[:total_spending] = current_cycle_total_spending
-    serialized_user[:next_tier_remaining_amount] = next_tier_remaining_amount
-    serialized_user[:downgraded_tier] = downgraded_tier
+    serialized_user[:total_spending] = current_cycle_total_spending/100
+    serialized_user[:next_tier_remaining_amount] = next_tier_remaining_amount/100
+    serialized_user[:downgraded_tier] = downgraded_tier.upcase
     serialized_user[:downgraded_date] = downgraded_date
-    serialized_user[:to_be_maintained_tier_remaining] = to_be_maintained_tier_remaining
+    serialized_user[:to_be_maintained_tier_remaining] = to_be_maintained_tier_remaining/100
     serialized_user
   end
 
@@ -48,7 +49,7 @@ class UserService
   def downgraded_tier
     eligible_tier = lowest_eligible_tier
     current_tier = @user.loyalty_tier
-    eligible_tier.rank < current_tier.rank ? eligible_tier.name : nil
+    eligible_tier.rank < current_tier.rank ? eligible_tier.name : ''
   end
 
   def downgraded_date
