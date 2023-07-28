@@ -9,7 +9,7 @@ class UserService
     serialized_user[:loyalty_tier] = @user.loyalty_tier.name.upcase
     serialized_user[:tier_calculation_start_date] = tier_calculation_start_date
     serialized_user[:total_spending] = current_cycle_total_spending/100
-    serialized_user[:next_tier] = next_tier.name.upcase
+    serialized_user[:next_tier] = next_tier.present? ? next_tier.name.upcase : ''
     serialized_user[:next_tier_remaining_amount] = next_tier_remaining_amount/100
     serialized_user[:next_tier_progress] = next_tier_progress
     serialized_user[:downgraded_tier] = downgraded_tier.upcase
@@ -48,7 +48,7 @@ class UserService
   end
 
   def next_tier_progress
-    return 0 unless next_tier.present?
+    return 100 unless next_tier.present?
 
     current_cycle_total_spending*100.0/next_tier.condition
   end
