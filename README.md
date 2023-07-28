@@ -74,3 +74,6 @@ rails test test/
 ## Special use cases
 1. If a customer completes an order with high amount, their tier can jump more than 1 rank. For example: bronze -> gold
 2. If a customer doesn't complete any orders within last year, recalculating tier job can downgrade their tier to base tier (bronze).
+
+## Improvement
+1. Instead of recalculating user's orders everytime customer completes an order, we can create a table only for storing user and their spending number from last year. We can clear this table at the first day of every year.
