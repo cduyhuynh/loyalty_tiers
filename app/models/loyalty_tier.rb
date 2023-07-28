@@ -8,6 +8,11 @@ class LoyaltyTier < ApplicationRecord
     rank >= RANKINGS.size
   end
 
+  def self.next_tier current_tier
+    return nil if current_tier.is_max_tier
+    find_by_rank(current_tier.rank + 1)
+  end
+
   def self.default_tier
     order(:rank).first
   end
