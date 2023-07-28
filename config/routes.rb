@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       put :complete
     end
 
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      get :orders
+    end
   end
 
   root "static#index"
