@@ -7,7 +7,7 @@ class Api::OrdersController < ApplicationController
 
   protected
   def service
-    @service ||= OrderService.new
+    @service ||= OrdersService.new
   end
 
   def find_order

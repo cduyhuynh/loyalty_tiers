@@ -66,7 +66,7 @@ class UserService
   end
 
   def downgraded_date
-    return nil if downgraded_tier.nil?
+    return nil unless downgraded_tier.present?
     Date.current.end_of_year
   end
 
