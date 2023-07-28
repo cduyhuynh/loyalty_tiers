@@ -3,10 +3,10 @@ import React from 'react';
 export default function({progress}){
   const containerStyles = {
     display: 'inline-block',
-    height: 20,
+    height: '100%',
     width: '100%',
     backgroundColor: "#e0e0de",
-    borderRadius: 25,
+    borderRadius: '7px'
   }
 
   const fillerStyles = {
@@ -14,7 +14,7 @@ export default function({progress}){
     width: `${progress}%`,
     backgroundColor: '#CC5500',
     textAlign: 'center',
-    borderRadius: 25,
+    borderRadius: '7px',
     display: 'inline-block',
   }
 

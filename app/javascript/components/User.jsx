@@ -20,7 +20,7 @@ export default function(){
     <p>Current tier: {user.loyalty_tier}</p>
     <p>Start date of the tier calculation: {user.tier_calculation_start_date}</p>
     <p>Amount spent since that start date: ${user.total_spending}</p>
-    <p>Amount that must be spent in order to reach the next tier: ${user.next_tier_remaining_amount}</p>
+    <p>To reach next tier, customer has to spend ${user.next_tier_remaining_amount} more</p>
     <p>Progress:  
       {user.loyalty_tier} <div style={{width:'200px', display:'inline-block'}} ><ProgressBar progress={user.next_tier_progress}/> </div> {user.next_tier}
     </p>
